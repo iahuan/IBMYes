@@ -16,7 +16,7 @@ create_mainfest_file(){
     #UUID=$(cat /proc/sys/kernel/random/uuid)
     #echo "生成随机UUID：${UUID}"
     read -p "请输入WebSocket路径：" WSPATH
-    echo "WebSocket路径：${IBM_APP_NAME}"
+    echo "WebSocket路径：${WSPATH}"
     #WSPATH=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 16)
     #echo "生成随机WebSocket路径：${WSPATH}"
     
