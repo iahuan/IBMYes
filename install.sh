@@ -11,10 +11,14 @@ create_mainfest_file(){
     IBM_MEM_SIZE=256
     fi
     echo "内存大小：${IBM_MEM_SIZE}"
-    UUID=$(cat /proc/sys/kernel/random/uuid)
-    echo "生成随机UUID：${UUID}"
-    WSPATH=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 16)
-    echo "生成随机WebSocket路径：${WSPATH}"
+    read -p "请输入UUID：" UUID
+    echo "你的UUID：${UUID}"
+    #UUID=$(cat /proc/sys/kernel/random/uuid)
+    #echo "生成随机UUID：${UUID}"
+    read -p "请输入WebSocket路径：" WSPATH
+    echo "WebSocket路径：${IBM_APP_NAME}"
+    #WSPATH=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 16)
+    #echo "生成随机WebSocket路径：${WSPATH}"
     
     cat >  ${SH_PATH}/IBMYes/v2ray-cloudfoundry/manifest.yml  << EOF
     applications:
@@ -98,8 +102,8 @@ install(){
     ibmcloud cf install
     ibmcloud cf push
     echo "安装完成。"
-    echo "生成的随机 UUID：${UUID}"
-    echo "生成的随机 WebSocket路径：${WSPATH}"
+    echo "UUID：${UUID}"
+    echo "WebSocket路径：${WSPATH}"
     VMESSCODE=$(base64 -w 0 << EOF
     {
       "v": "2",
